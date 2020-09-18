@@ -1,0 +1,13 @@
+version: '3.3'
+
+services: 
+    twitch_downloader:
+        container_name: ${TWITCH_USERNAME}_twitch
+        build: .
+        restart: "always"
+        environment: 
+            TWITCH_USERNAME: ${TWITCH_USERNAME}
+            SLEEP_SECONDS: 60
+            DOWNLOAD_DIR: /files/
+        volumes:
+            - ./${TWITCH_USERNAME}:/files/
