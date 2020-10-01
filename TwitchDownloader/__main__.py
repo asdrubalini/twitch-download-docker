@@ -11,6 +11,7 @@ from datetime import datetime
 twitch_username = os.getenv("TWITCH_USERNAME")
 sleep_seconds = os.getenv("SLEEP_SECONDS")
 download_dir = os.getenv("DOWNLOAD_DIR")
+ffmpeg_user_agent = os.getenv("FFMPEG_USER_AGENT")
 
 if twitch_username == "" or twitch_username is None:
     print("twitch_username env must be specified")
@@ -43,7 +44,7 @@ def ffmpeg_download_live(stream_url: str):
     # Measure time
     start_time = time.time()
     subprocess.call(
-        ["ffmpeg", "-i", stream_url, "-c", "copy", live_filename],
+        ["ffmpeg", "-i", stream_url, "-c", "copy", "-user-agent", ffmpeg_user_agent, live_filename],
         stdout=open(os.devnull, "w")
     )
 
