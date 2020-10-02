@@ -9,9 +9,8 @@ services:
             TWITCH_USERNAME: ${TWITCH_USERNAME}
             SLEEP_SECONDS: 60
             DOWNLOAD_DIR: /home/dev/files/
-            FFMPEG_USER_AGENT: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3554.0 Safari/537.36 
-            # volumes:
-            #     - "files:/home/dev/files/"
-
-volumes:
-    files:
+            FFMPEG_USER_AGENT: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3554.0 Safari/537.36
+        volumes:
+            - type: bind
+              source: ./${TWITCH_USERNAME}
+              target: /home/dev/files/

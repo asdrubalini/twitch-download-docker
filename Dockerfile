@@ -19,6 +19,7 @@ RUN pip install -r /tmp/requirements.txt
 
 RUN useradd -m -d /home/dev dev
 RUN chown -R dev /home/dev/
+RUN mkdir /home/dev/files/ && chown -R dev:dev /home/dev/files/
 USER dev
 
 COPY --chown=dev ./TwitchDownloader/ /home/dev/src/
